@@ -116,6 +116,28 @@ void main() {
     expect(find.byKey(const ValueKey('surah-row-1')), findsOneWidget);
   });
 
+  testWidgets('Continue Reading opens the saved Ayah', (tester) async {
+    final preferences = await SharedPreferences.getInstance();
+    await preferences.setString('quran.reading_progress', '2:255');
+    final verse = testQuranVerses.singleWhere(
+      (item) => item.surahNumber == 2 && item.verseNumber == 255,
+    );
+
+    await tester.pumpWidget(await createTestApp());
+    await pumpUi(tester);
+
+    final continueReading = find.byKey(const ValueKey('continue-reading-card'));
+    expect(continueReading, findsOneWidget);
+    await tester.tap(continueReading);
+    await pumpUi(tester);
+
+    final targetAyah = find.byKey(
+      ValueKey('verse-arabic-${verse.globalVerseNumber}'),
+    );
+    expect(targetAyah, findsOneWidget);
+    expect(tester.widget<Text>(targetAyah).data, verse.arabicText);
+  });
+
   testWidgets(
     'search empty state clears and Surah rows open their detail route',
     (tester) async {

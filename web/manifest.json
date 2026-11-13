@@ -1,11 +1,11 @@
 {
-    "name": "quran",
-    "short_name": "quran",
+    "name": "Quran | قورئان",
+    "short_name": "Quran",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Quran reading and recitation in Sorani Kurdish, Arabic, and English.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

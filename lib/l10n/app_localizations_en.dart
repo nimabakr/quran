@@ -209,6 +209,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quranReaderTitle => 'Quran reading';
 
   @override
+  String get continueReading => 'Continue Reading';
+
+  @override
+  String get readingProgressLoadError =>
+      'Your last reading position could not be loaded.';
+
+  @override
   String get quranReaderLoadError =>
       'Quran text or Sorani meanings could not be loaded.';
 

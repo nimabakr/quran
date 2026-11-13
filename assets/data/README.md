@@ -79,3 +79,21 @@ key aligned and every source translation non-empty.
   pending. The font is used for rendering only and does not alter source text.
 
 The same source and license information is available from Settings in the app.
+
+## Recitation audio
+
+- Provider: Al Quran Cloud API/CDN: https://api.alquran.cloud/ and
+  https://alquran.cloud/cdn.
+- The app catalog contains exactly 11 distinct Arabic audio edition IDs and
+  keeps each provider edition ID and its audio bitrate.
+- Provider edition metadata and the `/v1/quran/{edition}` responses were
+  checked on 2026-11-13 for all 11 configured IDs. Each response contained 114
+  Surahs, 6,236 Ayahs, and a source URL at the configured bitrate for every
+  Ayah.
+- HTTP HEAD checks for the first and last CDN Ayah URLs of each edition
+  returned 200 (22 files total). The other CDN files were not individually
+  requested, and recordings were not independently reviewed.
+- These checks verify provider metadata and current boundary-file availability;
+  they do not establish redistribution rights. Check Al Quran Cloud's current
+  terms and the reciters' rights before production distribution. No rights or
+  device-playback claim is made here.

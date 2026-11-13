@@ -24,9 +24,9 @@ class AssetQuranReciterDataSource {
         })
         .toList(growable: false);
     final identifiers = reciters.map((reciter) => reciter.identifier).toSet();
-    if (reciters.length < 11 || identifiers.length != reciters.length) {
+    if (reciters.length != 11 || identifiers.length != reciters.length) {
       throw const FormatException(
-        'The reciter catalog must contain at least 11 unique records.',
+        'The reciter catalog must contain exactly 11 unique records.',
       );
     }
     return List.unmodifiable(reciters);

@@ -436,6 +436,18 @@ abstract class AppLocalizations {
   /// **'Quran reading'**
   String get quranReaderTitle;
 
+  /// No description provided for @continueReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Reading'**
+  String get continueReading;
+
+  /// No description provided for @readingProgressLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Your last reading position could not be loaded.'**
+  String get readingProgressLoadError;
+
   /// No description provided for @quranReaderLoadError.
   ///
   /// In en, this message translates to:

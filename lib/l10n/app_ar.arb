@@ -84,6 +84,8 @@
   "madani": "مدنية",
   "surahDetailComingSoon": "ستضاف آيات القرآن وميزات القراءة في مرحلة لاحقة.",
   "quranReaderTitle": "قراءة القرآن",
+  "continueReading": "متابعة القراءة",
+  "readingProgressLoadError": "تعذر تحميل موضع القراءة الأخير.",
   "quranReaderLoadError": "تعذر تحميل نص القرآن أو معانيه بالسورانية.",
   "verseMeaningLabel": "معنى الآية",
   "verseNumber": "الآية {number}",

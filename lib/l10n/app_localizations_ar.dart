@@ -215,6 +215,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quranReaderTitle => 'قراءة القرآن';
 
   @override
+  String get continueReading => 'متابعة القراءة';
+
+  @override
+  String get readingProgressLoadError => 'تعذر تحميل موضع القراءة الأخير.';
+
+  @override
   String get quranReaderLoadError =>
       'تعذر تحميل نص القرآن أو معانيه بالسورانية.';
 

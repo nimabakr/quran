@@ -1,9 +1,6 @@
 name: Unsigned iOS Release IPA
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -38,6 +35,9 @@ jobs:
           app_path="build/ios/iphoneos/Runner.app"
           test -d "$app_path"
           test -f "$app_path/Info.plist"
+          widget_path="$app_path/PlugIns/QuranReadingWidgetExtension.appex"
+          test -d "$widget_path"
+          test -f "$widget_path/Info.plist"
 
           if /usr/bin/codesign -dv "$app_path" >/dev/null 2>&1; then
             echo "Runner.app unexpectedly has a code signature."
@@ -54,6 +54,8 @@ jobs:
 
           /usr/bin/unzip -Z1 dist/Quran-unsigned.ipa \
             | /usr/bin/grep -Fxq 'Payload/Runner.app/Info.plist'
+          /usr/bin/unzip -Z1 dist/Quran-unsigned.ipa \
+            | /usr/bin/grep -Fxq 'Payload/Runner.app/PlugIns/QuranReadingWidgetExtension.appex/Info.plist'
 
       - name: Upload unsigned IPA
         uses: actions/upload-artifact@v4

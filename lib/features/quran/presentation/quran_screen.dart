@@ -8,6 +8,7 @@ import '../../../app/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
 import '../domain/surah.dart';
 import '../downloads/surah_download_button.dart';
+import 'quran_reading_progress.dart';
 import 'surah_providers.dart';
 
 class QuranScreen extends ConsumerWidget {
@@ -18,6 +19,7 @@ class QuranScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     final surahs = ref.watch(surahsProvider);
     final searchQuery = ref.watch(surahSearchQueryProvider);
+    final readingProgress = ref.watch(quranReadingProgressProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -46,6 +48,22 @@ class QuranScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 12),
                   const _SurahSearchField(),
+                  readingProgress.when(
+                    loading: () => const SizedBox.shrink(),
+                    error: (error, stackTrace) => Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Text(
+                        l10n.readingProgressLoadError,
+                        key: const ValueKey('reading-progress-error'),
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                    ),
+                    data: (progress) => progress == null
+                        ? const SizedBox.shrink()
+                        : _ContinueReadingCard(progress: progress),
+                  ),
                 ],
               ),
             ),
@@ -97,6 +115,40 @@ class QuranScreen extends ConsumerWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ContinueReadingCard extends StatelessWidget {
+  const _ContinueReadingCard({required this.progress});
+
+  final QuranReadingProgress progress;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Card(
+        key: const ValueKey('continue-reading-card'),
+        child: ListTile(
+          leading: const Icon(Icons.bookmark_outline_rounded),
+          title: Text(l10n.continueReading),
+          subtitle: Text(
+            '${l10n.surahNumber(progress.surahNumber)} · '
+            '${l10n.verseNumber(progress.verseNumber)}',
+          ),
+          trailing: Icon(
+            Directionality.of(context) == TextDirection.rtl
+                ? Icons.chevron_left_rounded
+                : Icons.chevron_right_rounded,
+          ),
+          onTap: () => context.push(
+            '/quran/surah/${progress.surahNumber}?ayah=${progress.verseNumber}',
+          ),
         ),
       ),
     );

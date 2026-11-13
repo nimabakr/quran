@@ -16,6 +16,7 @@ import '../audio/quran_audio_player.dart';
 import '../audio/quran_audio_providers.dart';
 import '../domain/quran_verse.dart';
 import '../domain/surah.dart';
+import 'quran_reading_progress.dart';
 import '../widget/quran_home_widget.dart';
 import 'quran_verse_providers.dart';
 import 'surah_providers.dart';
@@ -307,6 +308,25 @@ class _QuranReadingViewState extends ConsumerState<_QuranReadingView> {
       _lastWidgetGlobalVerse = verse.globalVerseNumber;
       const QuranHomeWidgetSync().updateLastRead(
         QuranHomeWidgetData.fromVerse(surah: widget.surah, verse: verse),
+      );
+      unawaited(
+        ref
+            .read(quranReadingProgressProvider.notifier)
+            .save(
+              QuranReadingProgress(
+                surahNumber: verse.surahNumber,
+                verseNumber: verse.verseNumber,
+              ),
+            )
+            .catchError((Object error, StackTrace stackTrace) {
+              FlutterError.reportError(
+                FlutterErrorDetails(
+                  exception: error,
+                  stack: stackTrace,
+                  library: 'Quran reading progress',
+                ),
+              );
+            }),
       );
     });
   }

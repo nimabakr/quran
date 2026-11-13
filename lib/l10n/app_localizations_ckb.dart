@@ -208,6 +208,12 @@ class AppLocalizationsCkb extends AppLocalizations {
   String get quranReaderTitle => 'خوێندنەوەی قورئان';
 
   @override
+  String get continueReading => 'بەردەوامبوون لە خوێندنەوە';
+
+  @override
+  String get readingProgressLoadError => 'شوێنی دوا خوێندنەوە بارنەکرا.';
+
+  @override
   String get quranReaderLoadError => 'دەقی قورئان یان واتای سۆرانی بارنەکرا.';
 
   @override

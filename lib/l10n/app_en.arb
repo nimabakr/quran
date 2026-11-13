@@ -84,6 +84,8 @@
   "madani": "Madani",
   "surahDetailComingSoon": "Quran verses and reading features will be added in a later phase.",
   "quranReaderTitle": "Quran reading",
+  "continueReading": "Continue Reading",
+  "readingProgressLoadError": "Your last reading position could not be loaded.",
   "quranReaderLoadError": "Quran text or Sorani meanings could not be loaded.",
   "verseMeaningLabel": "Verse meaning",
   "verseNumber": "Verse {number}",

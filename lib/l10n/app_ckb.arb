@@ -84,6 +84,8 @@
   "madani": "مەدەنی",
   "surahDetailComingSoon": "ئایەتەکانی قورئان و تایبەتمەندییەکانی خوێندنەوە لە قۆناغێکی داهاتوودا زیاد دەکرێن.",
   "quranReaderTitle": "خوێندنەوەی قورئان",
+  "continueReading": "بەردەوامبوون لە خوێندنەوە",
+  "readingProgressLoadError": "شوێنی دوا خوێندنەوە بارنەکرا.",
   "quranReaderLoadError": "دەقی قورئان یان واتای سۆرانی بارنەکرا.",
   "verseMeaningLabel": "واتای ئایەت",
   "verseNumber": "ئایەتی {number}",

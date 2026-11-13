@@ -46,6 +46,11 @@ reader highlighting. Complete these checks on physical devices before release:
 
 ## Network and provider terms
 
+- All 11 configured Al Quran Cloud editions were checked against the provider
+  API on 2026-11-13; each returned 114 Surahs, 6,236 Ayahs, and a matching
+  configured-bitrate URL per Ayah. First/last CDN file HEAD checks returned
+  HTTP 200 for each edition. This does not replace checking every CDN file or
+  confirming rights.
 - Verify streaming and downloads over Wi-Fi and mobile data, including a
   dropped connection, retry, and resumed byte-range request.
 - Downloaded Al Quran Cloud audio is stored in app-managed local storage and
